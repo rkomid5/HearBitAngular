@@ -1,0 +1,24 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="RoleMappingForm">
+    <ng-template matStepLabel>Select User</ng-template>
+    <div >
+        <app-userin (valueChange)='getUserIdFromChild($event)'></app-userin>
+    </div>
+    <div class="container">
+      <mat-card class="selectedUser">Selected User Is: {{userForm.value.userId}}</mat-card>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="RoleMappingForm">
+    <ng-template matStepLabel>Select Role</ng-template>
+    <app-roles (valueChange)='getRoleIdFromChild($event)'></app-roles>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

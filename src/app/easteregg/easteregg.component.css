@@ -1,0 +1,12 @@
+.easteregg {
+  background-image: url("../../assets/img/scary-background_622083242.jpg");
+  background-size: cover;
+  height: 100%;
+  background-attachment: fixed;
+}
+
+.blood {
+
+  animation-fill-mode: forwards;
+  animation: backwards;
+}

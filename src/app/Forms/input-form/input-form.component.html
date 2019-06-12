@@ -1,0 +1,411 @@
+<mat-horizontal-stepper [linear]="false" #stepper>
+  <mat-step [stepControl]="HeartForm">
+
+
+    <form [formGroup]="HeartForm" class="example-full-width">
+      <ng-template matStepLabel>New Patient</ng-template>
+
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="FirstName">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Last Name" formControlName="LastName">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+
+      <!--<table class="example-full-width" cellspacing="0">-->
+        <!--<tr>-->
+          <!--<td>-->
+            <!--<mat-form-field class="example-full-width">-->
+              <!--<input matInput placeholder="City" formControlName="city">-->
+            <!--</mat-form-field>-->
+          <!--</td>-->
+          <!--<td>-->
+            <!--<mat-form-field class="example-full-width">-->
+              <!--<input matInput placeholder="State" formControlName="state">-->
+            <!--</mat-form-field>-->
+          <!--</td>-->
+          <!--<td>-->
+            <!--<mat-form-field class="example-full-width">-->
+              <!--<input matInput #postalCode maxlength="15" placeholder="Postal Code" formControlName="postal">-->
+              <!--<mat-hint align="end">{{postalCode.value.length}} / 15</mat-hint>-->
+            <!--</mat-form-field>-->
+          <!--</td>-->
+        <!--</tr>-->
+      <!--</table>-->
+
+      <!--<mat-form-field class="example-full-width">-->
+        <!--<textarea matInput placeholder="Address" formControlName="address"></textarea>-->
+      <!--</mat-form-field>-->
+
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Height (cm)" formControlName="height">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Weight (g)" formControlName="weight">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Mother Age (Year)" formControlName="AgeOfMother">
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Gestational age in weeks (20 - 44)" formControlName="GestAgeWeek">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Gestational age in days (0 - 6)" formControlName="GestAgeDay">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Real Age (month)" formControlName="Age">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Real Age (Day)" formControlName="AgeDay">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <div>
+        <button mat-button matStepperNext class="mat-raised-button">Next</button>
+      </div>
+
+
+    </form>
+
+
+  </mat-step>
+
+
+  <mat-step [stepControl]="HeartForm">
+
+    <form [formGroup]="HeartForm" class="example-full-width">
+      <ng-template matStepLabel>Upload Sound</ng-template>
+
+      <div class="container">
+
+
+        <div class="dashed_upload">
+          <div class="wrapper">
+            <div class="drop">
+              <div class="cont"><i class="fa fa-cloud-upload"></i>
+                <div class="tit">
+                  Drag &amp; Drop
+                </div>
+                <div class="desc">
+                  or
+                </div>
+                <div class="browse">
+                  click here to browse
+                </div>
+              </div>
+              <input type="file"
+                     id="file"
+                     (change)="handleFileInput($event.target.files)">
+            </div>
+            <div>
+              <button *ngIf="fileToUpload" mat-fab color="primary" (click)="uploadFileToActivity()" type="button"
+                      [disabled]="buttonDis" class="align-content-center">
+                <mat-icon>check</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container" [ngClass]="{'filledUrl': FileNamee != null}">
+        <p>
+         File name is : {{FileNamee}}
+        </p>
+      </div>
+
+      <div class="container">
+        <button mat-button matStepperNext class="mat-raised-button neexStepTwo">Next</button>
+      </div>
+
+
+    </form>
+
+
+  </mat-step>
+
+  <mat-step [stepControl]="HeartForm">
+
+    <form [formGroup]="HeartForm" class="example-full-width">
+      <ng-template matStepLabel>Detailed History</ng-template>
+
+      <table class="example-full-width3" cellspacing="0">
+        <!--<tr>-->
+          <!--<td>-->
+            <!--<mat-form-field>-->
+              <!--<mat-label>Mother Race</mat-label>-->
+              <!--<mat-select formControlName="MotherRace" name="MotherRace">-->
+                <!--<mat-option *ngFor="let race of Race" [value]="race.Value">-->
+                  <!--{{race.Name}}-->
+                <!--</mat-option>-->
+              <!--</mat-select>-->
+            <!--</mat-form-field>-->
+          <!--</td>-->
+          <!--<td>-->
+            <!--<mat-form-field>-->
+              <!--<mat-label>Father Race</mat-label>-->
+              <!--<mat-select formControlName="FatherRace" name="FatherRace">-->
+                <!--<mat-option *ngFor="let race of Race" [value]="race.Value">-->
+                  <!--{{race.Name}}-->
+                <!--</mat-option>-->
+              <!--</mat-select>-->
+            <!--</mat-form-field>-->
+          <!--</td>-->
+          <!--<td>-->
+            <!--<mat-form-field>-->
+              <!--<mat-label>Mariage Family Relation</mat-label>-->
+              <!--<mat-select formControlName="FamilyRelation" name="FatherRace">-->
+                <!--<mat-option *ngFor="let rel of Relationss" [value]="rel.Value">-->
+                  <!--{{rel.Name}}-->
+                <!--</mat-option>-->
+              <!--</mat-select>-->
+            <!--</mat-form-field>-->
+          <!--</td>-->
+        <!--</tr>-->
+
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Other Child Has Anomaly?</mat-label>
+              <mat-select formControlName="ChildDis" name="ChildDis">
+                <mat-option *ngFor="let label of Labelss" [value]="label.Value">
+                  {{label.Name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Father Inherited Anomaly?</mat-label>
+              <mat-select formControlName="FatherDisHistory" name="FatherDisHistory">
+                <mat-option *ngFor="let label of Labelss" [value]="label.Value">
+                  {{label.Name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Mother Inherited Anomaly?</mat-label>
+              <mat-select formControlName="MotherDisHistory" name="MotherDisHistory">
+                <mat-option *ngFor="let label of Labelss" [value]="label.Value">
+                  {{label.Name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Other Anomaly?</mat-label>
+              <mat-select formControlName="OtherUnomaly" name="OtherUnomaly">
+                <mat-option *ngFor="let anom of anomaly" [value]="anom.Value">
+                  {{anom.Name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <table class="example-full-width3" cellspacing="0">
+        <tr>
+
+          <td>
+            <mat-card>
+              <mat-label class="mat-card-header">Digest Anomaly?</mat-label>
+              <mat-slide-toggle class="mat-card-content"
+                                formControlName="DigestUnomaly"
+                                [color]="primary"
+                                [checked]="true"
+                                [disabled]="false">
+                Slide me!
+              </mat-slide-toggle>
+            </mat-card>
+          </td>
+          <td>
+            <mat-card>
+              <mat-label class="mat-card-header">Mother Smoking?</mat-label>
+              <mat-slide-toggle class="mat-card-content"
+                                formControlName="MotherCigaret"
+                                [color]="primary"
+                                [checked]="true"
+                                [disabled]="false">
+                Slide me!
+              </mat-slide-toggle>
+            </mat-card>
+          </td>
+          <td>
+            <mat-card>
+              <mat-label class="mat-card-header">Father Smoking?</mat-label>
+              <mat-slide-toggle class="mat-card-content"
+                                formControlName="FatherCigaret"
+                                [color]="primary"
+                                [checked]="true"
+                                [disabled]="false">
+                Slide me!
+              </mat-slide-toggle>
+            </mat-card>
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            <mat-card class="mat-card">
+              <mat-label class="mat-card-header">In touch with Chemicals?</mat-label>
+              <mat-slide-toggle class="mat-card-content"
+                                formControlName="Chemical"
+                                [color]="primary"
+                                [checked]="true"
+                                [disabled]="false">
+                Slide me!
+              </mat-slide-toggle>
+            </mat-card>
+          </td>
+          <td>
+            <mat-card>
+              <mat-label class="mat-card-header">Mother Alcholic?</mat-label>
+              <mat-slide-toggle class="mat-card-content"
+                                formControlName="MotherAlchol"
+                                [color]="primary"
+                                [checked]="true"
+                                [disabled]="false">
+                Slide me!
+              </mat-slide-toggle>
+            </mat-card>
+          </td>
+          <td>
+            <mat-card>
+              <mat-label class="mat-card-header">Family Mariage?</mat-label>
+              <mat-slide-toggle class="mat-card-content"
+                                formControlName="FamilyRelation"
+                                [color]="primary"
+                                [checked]="true"
+                                [disabled]="false">
+                Slide me!
+              </mat-slide-toggle>
+            </mat-card>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-card>
+              <mat-label class="mat-card-header">Mother Blood Pressure</mat-label>
+              <mat-slide-toggle class="mat-card-content"
+                                formControlName="HeartPressure"
+                                [color]="primary"
+                                [checked]="false"
+                                [disabled]="false">
+                Slide me!
+              </mat-slide-toggle>
+            </mat-card>
+          </td>
+          <!--<td>-->
+          <!--<mat-form-field class="example-full-width3">-->
+          <!--<input matInput placeholder="Pressure Month" formControlName="HeartPressureTime">-->
+          <!--</mat-form-field>-->
+          <!--</td>-->
+          <!--<td>-->
+          <!--<mat-form-field class="example-full-width3">-->
+          <!--<textarea matInput placeholder="Mother Blood Pressure med" formControlName="HeartPressureType"></textarea>-->
+          <!--</mat-form-field>-->
+          <!--</td>-->
+
+          <td>
+            <mat-card>
+              <mat-label class="mat-card-header">Mother Diabete</mat-label>
+              <mat-slide-toggle class="mat-card-content"
+                                formControlName="MotherDiabete"
+                                [color]="primary"
+                                [checked]="false"
+                                [disabled]="false">
+                Slide me!
+              </mat-slide-toggle>
+            </mat-card>
+          </td>
+          <td>
+            <mat-card>
+              <mat-label class="mat-card-header">Mother Diabete Controlled?</mat-label>
+              <mat-slide-toggle class="mat-card-content"
+                                formControlName="MotherDiabeteControled"
+                                [color]="primary"
+                                [checked]="false"
+                                [disabled]="false">
+                Slide me!
+              </mat-slide-toggle>
+            </mat-card>
+          </td>
+        </tr>
+
+      </table>
+
+      <!--<mat-form-field class="example-full-width3">-->
+        <!--<textarea matInput placeholder="Mother Job" formControlName="MotherJob"></textarea>-->
+      <!--</mat-form-field>-->
+
+    </form>
+    <div>
+      <button mat-button matStepperNext class="mat-raised-button">Next</button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="HeartForm">
+    <form [formGroup]="HeartForm" class="example-full-width">
+      <ng-template matStepLabel>Finish It :)</ng-template>
+
+
+
+
+      <div class="container finalLabel" [ngClass]="{'filled3': HeartForm.value.label != false}">
+        <mat-form-field class="example-full-width">
+          <mat-label>Final Label</mat-label>
+          <mat-select formControlName="label" name="label">
+            <mat-option *ngFor="let label of Labelss" [value]="label.Value">
+              {{label.Name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="finishbutton">
+        <!--<button mat-button (click)="onNoClick()">No Thanks</button>-->
+        <button *ngIf="buttonDis" mat-raised-button type="button" mat-dialog-close="true" (click)="onSubmitss()"
+                type="button" class="mat-flat-button">Submit
+        </button>
+      </div>
+
+
+    </form>
+
+  </mat-step>
+</mat-horizontal-stepper>

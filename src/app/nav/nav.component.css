@@ -1,0 +1,34 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 13%;
+  background: url('../../assets/img/vertical-stripes-paper-pattern.jpg') no-repeat;
+  filter: blur();
+  background-attachment: fixed;
+
+  background-size: 13% 100%;
+
+}
+
+
+.sidenav .mat-toolbar {
+
+  background-size: inherit;
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.omid {
+  background: url('../../assets/cool-background.png') no-repeat;
+  background-size: cover;
+  height: 100%;
+  background-attachment: fixed;
+}
+
+

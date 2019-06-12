@@ -1,0 +1,90 @@
+<mat-form-field class="filter">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+<div class="mat-elevation-z8 tablee">
+
+  <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="FirstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+      <td mat-cell *matCellDef="let row">{{row.FirstName}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="LastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+      <td mat-cell *matCellDef="let row">{{row.LastName}}</td>
+    </ng-container>
+
+    <!--<ng-container matColumnDef="city">-->
+      <!--<th mat-header-cell *matHeaderCellDef mat-sort-header>city</th>-->
+      <!--<td mat-cell *matCellDef="let row">{{row.city}}</td>-->
+    <!--</ng-container>-->
+
+    <!--<ng-container matColumnDef="state">-->
+      <!--<th mat-header-cell *matHeaderCellDef mat-sort-header>state</th>-->
+      <!--<td mat-cell *matCellDef="let row">{{row.state}}</td>-->
+    <!--</ng-container>-->
+
+    <!--<ng-container matColumnDef="postal">-->
+      <!--<th mat-header-cell *matHeaderCellDef mat-sort-header>postal</th>-->
+      <!--<td mat-cell *matCellDef="let row">{{row.postal}}</td>-->
+    <!--</ng-container>-->
+
+    <ng-container matColumnDef="Age">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Age(month)</th>
+      <td mat-cell *matCellDef="let row">{{row.Age}}</td>
+    </ng-container>
+    <ng-container matColumnDef="AgeDay">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Age(Day)</th>
+      <td mat-cell *matCellDef="let row">{{row.AgeDay}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>weight</th>
+      <td mat-cell *matCellDef="let row">{{row.weight}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="height">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>height</th>
+      <td mat-cell *matCellDef="let row">{{row.height}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="label">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>label</th>
+      <td mat-cell *matCellDef="let row">{{row.label}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="URL">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>URL</th>
+      <td mat-cell *matCellDef="let row">{{row.URL}}</td>
+    </ng-container>
+
+    <!--<ng-container matColumnDef="address">-->
+      <!--<th mat-header-cell *matHeaderCellDef mat-sort-header>address</th>-->
+      <!--<td mat-cell *matCellDef="let row">{{row.address}}</td>-->
+    <!--</ng-container>-->
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+
+
+
+  <mat-paginator #paginator
+      [length]="dataSource.data.length"
+      [pageIndex]="0"
+      [pageSize]="7"
+      [pageSizeOptions]="[25, 50, 100, 250]">
+  </mat-paginator>
+
+
+</div>
+
+<button  mat-fab color="primary"  type="button" (click)="addDialog()">
+  <mat-icon  >add</mat-icon>
+</button>
